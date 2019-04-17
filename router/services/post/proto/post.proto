@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package post;
+
+service Posts {
+    rpc GetCategories(CategoryRequest) returns (CategoryResponse) {}
+    rpc GetPosts(PostRequest) returns (PostResponse) {}
+}
+
+message CategoryRequest {
+}
+
+message Category {
+    int32 id = 1;
+    string title = 2;
+}
+
+message CategoryResponse {
+    repeated Category categories = 1;
+    bool Result = 2;
+}
+
+message PostRequest {
+    int32 Category = 1;
+}
+
+message Post {
+    int32 id = 1;
+    string title = 2;
+    string text = 3;
+    int32 category = 4;
+    string created = 5;
+}
+
+message PostResponse {
+    repeated Post posts = 1;
+    bool Result = 2;
+}
